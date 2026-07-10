@@ -1,0 +1,1 @@
+../../../../../../../kernel/xiaomi/msm8937/include/uapi/linux/qcom_scm.h
