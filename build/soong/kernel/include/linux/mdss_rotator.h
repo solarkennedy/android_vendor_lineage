@@ -1,1 +1,0 @@
-../../../../../../../kernel/xiaomi/msm8937/include/uapi/linux/mdss_rotator.h
