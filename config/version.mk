@@ -1,10 +1,16 @@
 PRODUCT_VERSION_MAJOR = 24
 PRODUCT_VERSION_MINOR = 0
 
-ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
-else
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d)
+# pepito: honor an externally injected LINEAGE_BUILD_DATE. release-all.sh picks
+# one date up front and exports it so both variants (vanilla + gapps) and the
+# release share it — a build straddling UTC midnight otherwise stamps each
+# variant a different day. Only derive from the clock when nothing was injected.
+ifeq ($(origin LINEAGE_BUILD_DATE),undefined)
+    ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
+        LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
+    else
+        LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d)
+    endif
 endif
 
 # Set LINEAGE_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
