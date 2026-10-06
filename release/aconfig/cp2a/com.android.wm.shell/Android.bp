@@ -21,7 +21,7 @@
 //     crash-loops Trebuchet). See packages/apps/Launcher3 patch + PLAN-misc.md §2.
 // READ_ONLY so the GMS multitasking device_config push can't re-enable it at runtime.
 aconfig_values {
-    name: "aconfig-values-lineage-bp4a-com.android.wm.shell-all",
+    name: "aconfig-values-lineage-cp2a-com.android.wm.shell-all",
     package: "com.android.wm.shell",
     srcs: [
         "*_flag_values.textproto",
